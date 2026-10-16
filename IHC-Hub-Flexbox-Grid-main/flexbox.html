@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flexbox - Aula de CSS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+  <header>
+    <h1>Flexbox: layouts em uma dimensão</h1>
+    <a href="index.html">Voltar ao Hub</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>O que é Flexbox?</h2>
+      <p>Flexbox é um modelo de layout para organizar elementos em uma dimensão: em uma linha ou em uma coluna. Ele é útil para barras de navegação, grupos de botões, listas e para alinhar conteúdo dentro de um contêiner.</p>
+      <p>O elemento que recebe <code>display: flex</code> é o <strong>contêiner flexível</strong>; seus filhos diretos são os <strong>itens flexíveis</strong>. As propriedades de alinhamento e distribuição são definidas principalmente no contêiner.</p>
+    </section>
+
+    <section>
+      <h2>Eixo principal e eixo transversal</h2>
+      <p><code>flex-direction</code> define o eixo principal: <code>row</code> organiza em linha (padrão), <code>column</code> em coluna. O eixo transversal é perpendicular ao principal. Se a direção mudar, os eixos também mudam.</p>
+      <div class="flex-demo flex-direction-demo">
+        <div>Item 1</div><div>Item 2</div><div>Item 3</div>
+      </div>
+      <pre><code>.container {
+  display: flex;
+  flex-direction: row; /* ou column */
+}</code></pre>
+      <p><code>justify-content</code> distribui os itens no eixo principal; <code>align-items</code> alinha os itens no eixo transversal. Seus efeitos dependem de <code>flex-direction</code>.</p>
+      <div class="flex-demo flex-alignment-demo">
+        <div>Um</div><div>Dois</div><div>Três</div>
+      </div>
+      <pre><code>.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}</code></pre>
+      <p>Use <code>gap</code> para criar espaço entre itens sem adicionar margens individuais. Outros valores úteis de <code>justify-content</code> incluem <code>center</code>, <code>flex-start</code>, <code>flex-end</code> e <code>space-around</code>.</p>
+    </section>
+
+    <section>
+      <h2>Quebra de linha e itens flexíveis</h2>
+      <p>Por padrão, os itens tentam permanecer na mesma linha. Com <code>flex-wrap: wrap</code>, eles passam para outra linha quando falta espaço, o que ajuda a criar grupos adaptáveis.</p>
+      <div class="flex-demo flex-wrap-demo">
+        <div>Cartão 1</div><div>Cartão 2</div><div>Cartão 3</div><div>Cartão 4</div><div>Cartão 5</div>
+      </div>
+      <pre><code>.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.item {
+  flex: 1 1 140px;
+}</code></pre>
+      <p>A forma abreviada <code>flex</code> combina três comportamentos: crescimento (<code>flex-grow</code>), redução (<code>flex-shrink</code>) e tamanho-base (<code>flex-basis</code>). Em <code>flex: 1 1 140px</code>, cada item pode crescer e encolher, partindo de 140px.</p>
+    </section>
+
+    <section>
+      <h2>Controle por item</h2>
+      <p><code>align-self</code> substitui o alinhamento transversal de um item específico. <code>order</code> altera a ordem visual, mas não a ordem de leitura e navegação; use com cuidado e mantenha uma sequência lógica no HTML.</p>
+      <div class="flex-demo flex-item-demo">
+        <div>Normal</div><div class="flex-item-raised">align-self</div><div>Normal</div>
+      </div>
+      <pre><code>.item-especial {
+  align-self: flex-start;
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Quando escolher Flexbox?</h2>
+      <p>Escolha Flexbox quando a organização principal acontecer em uma direção e o tamanho do conteúdo puder influenciar a distribuição. Para controlar simultaneamente linhas e colunas de uma composição, considere CSS Grid.</p>
+      <p><strong>Atividade:</strong> transforme os exemplos: mude a direção, teste outros valores de alinhamento e ajuste a largura da janela para observar a quebra dos itens.</p>
+    </section>
+  </main>
+
+  <footer><p>Desenvolvido por Prof. Dionatan Inhoato Markiu — © 2025</p></footer>
+</body>
+</html>

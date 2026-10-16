@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Grid - Aula de CSS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Grid: linhas e colunas</h1>
+    <a href="index.html">Voltar ao Hub</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Como funciona o Grid?</h2>
+      <p>CSS Grid é um modelo de layout bidimensional: organiza elementos em linhas e colunas ao mesmo tempo. O elemento com <code>display: grid</code> é o contêiner; seus filhos diretos são os itens do grid.</p>
+      <p>As <strong>trilhas</strong> são as linhas ou colunas que formam a grade. As <strong>células</strong> são os espaços entre uma linha e outra; um item pode ocupar uma ou várias células.</p>
+    </section>
+
+    <section>
+      <h2>Definindo colunas, linhas e espaços</h2>
+      <p><code>grid-template-columns</code> define as colunas e <code>grid-template-rows</code> define as linhas. A unidade <code>fr</code> divide o espaço disponível em frações. <code>gap</code> cria o espaço entre trilhas.</p>
+      <div class="grid-demo grid-basic-demo">
+        <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+      </div>
+      <pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 80px 120px;
+  gap: 12px;
+}</code></pre>
+      <p><code>repeat(3, 1fr)</code> é uma forma compacta de repetir três colunas iguais. Para trilhas responsivas, <code>minmax(160px, 1fr)</code> define um mínimo e permite que a coluna cresça.</p>
+    </section>
+
+    <section>
+      <h2>Linhas e posicionamento dos itens</h2>
+      <p>As linhas do grid são numeradas a partir de 1. Use <code>grid-column</code> e <code>grid-row</code> para indicar as linhas inicial e final que delimitam o espaço de um item. Por exemplo, <code>1 / 3</code> ocupa o espaço entre as linhas 1 e 3, abrangendo duas trilhas.</p>
+      <div class="grid-demo grid-placement-demo">
+        <div class="grid-wide">Item A: colunas 1 a 3</div>
+        <div>Item B</div><div>Item C</div><div>Item D</div>
+      </div>
+      <pre><code>.item-destacado {
+  grid-column: 1 / 3;
+}
+
+.item-alto {
+  grid-row: 2 / 4;
+}</code></pre>
+      <p>Quando um item não tem posição definida, o algoritmo de posicionamento automático o coloca na próxima célula disponível. Se os itens ultrapassarem a grade declarada, o Grid pode criar trilhas implícitas.</p>
+    </section>
+
+    <section>
+      <h2>Áreas nomeadas</h2>
+      <p><code>grid-template-areas</code> permite desenhar uma grade com nomes. Cada texto entre aspas representa uma linha, e cada nome indica a área que um item poderá ocupar. Um ponto representa uma célula vazia.</p>
+      <div class="grid-demo grid-areas-demo">
+        <div class="area-header">Cabeçalho</div>
+        <div class="area-nav">Navegação</div>
+        <div class="area-content">Conteúdo principal</div>
+        <div class="area-footer">Rodapé</div>
+      </div>
+      <pre><code>.pagina {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "cabecalho cabecalho"
+    "menu      conteudo"
+    "rodape    rodape";
+  gap: 12px;
+}
+
+.cabecalho { grid-area: cabecalho; }
+.menu { grid-area: menu; }
+.conteudo { grid-area: conteudo; }
+.rodape { grid-area: rodape; }</code></pre>
+    </section>
+
+    <section>
+      <h2>Grade adaptável</h2>
+      <p>Combine <code>repeat()</code>, <code>auto-fit</code> e <code>minmax()</code> para criar colunas que se ajustam ao espaço disponível sem precisar definir um número fixo de colunas.</p>
+      <div class="grid-demo grid-responsive-demo">
+        <div>Card 1</div><div>Card 2</div><div>Card 3</div><div>Card 4</div>
+      </div>
+      <pre><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}</code></pre>
+      <p><strong>Atividade:</strong> altere o número de colunas, experimente fazer um item ocupar mais trilhas e redimensione a janela para observar a grade se reorganizar.</p>
+    </section>
+  </main>
+
+  <footer><p>Desenvolvido por Prof. Dionatan Inhoato Markiu — © 2025</p></footer>
+</body>
+</html>

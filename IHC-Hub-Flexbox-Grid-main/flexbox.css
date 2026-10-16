@@ -1,0 +1,70 @@
+.flex-demo {
+  display: flex;
+  min-height: 130px;
+  padding: 16px;
+  gap: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  background: rgba(0, 216, 255, 0.06);
+  margin: 16px 0;
+}
+
+.flex-demo > div {
+  display: flex;
+  min-width: 78px;
+  min-height: 58px;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: #087f8c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.flex-direction-demo {
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-alignment-demo {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-wrap-demo {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-demo > div {
+  flex: 1 1 125px;
+}
+
+.flex-item-demo {
+  align-items: center;
+}
+
+.flex-item-demo .flex-item-raised {
+  align-self: flex-start;
+  background: #c65d28;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  line-height: 1.5;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+}
+
+@media (max-width: 600px) {
+  .flex-demo {
+    padding: 12px;
+    gap: 8px;
+  }
+}
